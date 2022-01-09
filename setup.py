@@ -1,0 +1,29 @@
+import setuptools
+
+VERSION = "0.0.1"
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="ppager",
+    version=VERSION,
+    author="Berk Karaal",
+    author_email="iletisim.berkkaraal@gmail.com",
+    description="PAGER with Python that can be implemented to your projects.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    keywords="pager less more most terminal",
+    url="https://github.com/berk-karaal/ppager",
+    license="MIT",
+    project_urls={
+        "Bug Tracker": "https://github.com/berk-karaal/ppager/issues",
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    packages=["ppager", "ppager.entry_points"],
+    entry_points={"console_scripts": ["ppager=ppager.entry_points.run_ppager:run"]},
+    python_requires=">=3.8",
+)
