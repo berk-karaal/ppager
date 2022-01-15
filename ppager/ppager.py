@@ -2,7 +2,6 @@ import curses, textwrap, traceback
 
 
 class Pager:
-
     def __init__(
         self,
         text: list,
@@ -325,7 +324,7 @@ class Pager:
                 bottom_bar_text
                 + " " * (width - len(bottom_bar_text) - len(bottom_bar_cursor_datas))
                 + bottom_bar_cursor_datas,
-                curses.color_pair(3) + curses.A_BOLD + curses.A_DIM,
+                curses.color_pair(3),
             )
             # we are using insstr() because addstr() does not allow filling the entire line if we are using getch() after it
 
@@ -627,7 +626,7 @@ class Pager:
                 bottom_text
                 + " " * (width - len(bottom_text) - len(cursor_y_pos_text))
                 + cursor_y_pos_text,
-                curses.color_pair(3) + curses.A_DIM,
+                curses.color_pair(3),
             )
 
             scr.refresh()
