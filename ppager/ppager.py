@@ -23,8 +23,8 @@ class Pager:
         overflow_indicator_fg: str = "black",
         overflow_indicator_bg: str = "white",
         end_text: str = "(END)",
-        end_fg: str = "black",
-        end_bg: str = "white",
+        end_text_fg: str = "black",
+        end_text_bg: str = "white",
         bottom_bar_text: str = "Quit(q) Help(h)",
         bottom_bar_bg: str = "white",
         bottom_bar_fg: str = "black",
@@ -55,8 +55,8 @@ class Pager:
         self.overflow_indicator_fg = overflow_indicator_fg
         self.overflow_indicator_bg = overflow_indicator_bg
         self.end_text = end_text
-        self.end_fg = end_fg
-        self.end_bg = end_bg
+        self.end_text_fg = end_text_fg
+        self.end_text_bg = end_text_bg
         self.bottom_bar_text = bottom_bar_text
         self.bottom_bar_bg = bottom_bar_bg
         self.bottom_bar_fg = bottom_bar_fg
@@ -92,7 +92,7 @@ class Pager:
         }
 
         curses.init_pair(
-            2, curses_colors[self.end_fg], curses_colors[self.end_bg]
+            2, curses_colors[self.end_text_fg], curses_colors[self.end_text_bg]
         )  # color for self.end_text
         curses.init_pair(
             3,
