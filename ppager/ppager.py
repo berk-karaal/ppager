@@ -236,20 +236,6 @@ class Pager:
                                 cursor_x : cursor_x + free_space_for_text
                             ]
                         )
-                        if (
-                            self.show_overflow_indicator
-                            and cursor_x + free_space_for_text
-                            < len(self.text[line_index])
-                        ):
-                            # there is at least one character that didn't fit to screen (overflowing from right side)
-                            scr.addstr(
-                                len(self.title_text.splitlines()) + i,
-                                width
-                                - len(self.overflow_indicator)
-                                - self.right_padding_for_text,
-                                self.overflow_indicator,
-                                curses.color_pair(8),
-                            )
 
                     else:
                         # search is activated
@@ -279,6 +265,20 @@ class Pager:
                                 else:
                                     # char isn't inside of any find_str
                                     scr.addstr(char)
+
+                    if (
+                        self.show_overflow_indicator
+                        and cursor_x + free_space_for_text < len(self.text[line_index])
+                    ):
+                        # there is at least one character that didn't fit to screen (overflowing from right side)
+                        scr.addstr(
+                            len(self.title_text.splitlines()) + i,
+                            width
+                            - len(self.overflow_indicator)
+                            - self.right_padding_for_text,
+                            self.overflow_indicator,
+                            curses.color_pair(8),
+                        )
 
                 else:
                     # we displayed last line of self.text but there is still a gap between last line and bottom bar
