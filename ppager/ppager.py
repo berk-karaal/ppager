@@ -17,8 +17,8 @@ class Pager:
         space_after_separator: bool = True,
         title_text: str = "",
         center_title: bool = False,
-        title_bg: str = "-",
         title_fg: str = "-",
+        title_bg: str = "-",
         overflow_indicator: str = ">",
         overflow_indicator_fg: str = "black",
         overflow_indicator_bg: str = "white",
@@ -26,8 +26,8 @@ class Pager:
         end_text_fg: str = "black",
         end_text_bg: str = "white",
         bottom_bar_text: str = "Quit(q) Help(h)",
-        bottom_bar_bg: str = "white",
         bottom_bar_fg: str = "black",
+        bottom_bar_bg: str = "white",
         show_cursor_y_position: bool = True,
         show_cursor_y_percentage: bool = True,
         blink: bool = False,
@@ -49,8 +49,8 @@ class Pager:
         self.space_after_separator = space_after_separator
         self.title_text = title_text
         self.center_title = center_title
-        self.title_bg = title_bg
         self.title_fg = title_fg
+        self.title_bg = title_bg
         self.overflow_indicator = overflow_indicator
         self.overflow_indicator_fg = overflow_indicator_fg
         self.overflow_indicator_bg = overflow_indicator_bg
@@ -58,8 +58,8 @@ class Pager:
         self.end_text_fg = end_text_fg
         self.end_text_bg = end_text_bg
         self.bottom_bar_text = bottom_bar_text
-        self.bottom_bar_bg = bottom_bar_bg
         self.bottom_bar_fg = bottom_bar_fg
+        self.bottom_bar_bg = bottom_bar_bg
         self.show_cursor_y_position = show_cursor_y_position
         self.show_cursor_y_percentage = show_cursor_y_percentage
         self.blink = [
