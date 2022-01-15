@@ -22,7 +22,7 @@ pager = Pager(
     overflow_indicator_bg="cyan",
     overflow_indicator_fg="white",
     end_text=" ＼(^o^)／ ",
-    end_bg="magenta",
-    end_fg="black",
+    end_text_bg="magenta",
+    end_text_fg="black",
 )
 pager.run()
