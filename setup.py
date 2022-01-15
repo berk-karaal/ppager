@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
@@ -16,6 +16,8 @@ setuptools.setup(
     url="https://github.com/berk-karaal/ppager",
     license="MIT",
     project_urls={
+        "Documentation": "https://berkkaraal.com/ppager-docs/",
+        "Source": "https://github.com/berk-karaal/ppager/",
         "Bug Tracker": "https://github.com/berk-karaal/ppager/issues",
     },
     classifiers=[
