@@ -1,2 +1,4 @@
 dist/
 ppager.egg-info/
+use_pager.py
+ppager/__pycache__/
