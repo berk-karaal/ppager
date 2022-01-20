@@ -1,5 +1,4 @@
 import sys, os
-import time
 
 from ppager import Pager
 
