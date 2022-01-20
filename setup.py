@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "0.0.2"
+VERSION = "0.1.0"
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
@@ -25,7 +25,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    packages=["ppager", "ppager.entry_points"],
-    entry_points={"console_scripts": ["ppager=ppager.entry_points.run_ppager:run"]},
+    packages=["ppager"],
+    entry_points={"console_scripts": ["ppager=ppager.run_ppager:run"]},
     python_requires=">=3.8",
 )
