@@ -1,6 +1,6 @@
 import sys, os
 
-from ppager import Pager
+from ppager.ppager import Pager
 
 
 def run():
