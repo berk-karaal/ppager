@@ -5,7 +5,7 @@ from ppager.ppager import Pager
 
 def run():
 
-    VERSION = "0.1.0"
+    VERSION = "0.1.1"
     argv = sys.argv
 
     pager_should_run = False
