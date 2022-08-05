@@ -1,53 +1,43 @@
-import sys, os
+import sys, argparse
 
 from ppager.ppager import Pager
+
+VERSION = "0.1.1"
 
 
 def run():
 
-    VERSION = "0.1.1"
-    argv = sys.argv
+    parser = argparse.ArgumentParser(prog="ppager", add_help=False)
 
-    pager_should_run = False
+    parser.add_argument(
+        "-v",
+        "--version",
+        default=False,
+        action="version",
+        version=f"%(prog)s {VERSION}",
+        help="show version number of ppager",
+    )
+    parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="show this help message",
+    )
+    parser.add_argument("file", type=argparse.FileType("r"), nargs="?")
+
+    args = parser.parse_args()
 
     if not sys.stdin.isatty():
         # TODO
         print("This version of ppager is not capable of using stdin :(\nIt's in TODO")
+        return
 
-    else:
-        if len(argv) == 2:
-            if argv[1] in ["-V", "--version"]:
-                print(f"ppager {VERSION}")
+    if args.file:
+        Pager(text=args.file.readlines()).run()
+        return
 
-            elif argv[1] in ["-H", "--help"]:
-                print(
-                    "ppager is PAGER like less command in UNIX systems. It was mainly developed as a Python library that programmers can implement it to their projects.\nIn order to use ppager in command line:\n\nppager\n"
-                    + "-v --version  : ppager version\n"
-                    + "-h --help     : display this help menu\n"
-                    + "<document>    : display given document\n"
-                )
-
-            else:
-                try:
-                    with open(os.getcwd() + "/" + argv[1]) as file:
-                        text = file.read().splitlines()
-                    pager_should_run = True
-
-                except FileNotFoundError:
-                    print(f"'{argv[1]}' couldn't be found")
-
-                except IsADirectoryError:
-                    print(f"'{argv[1]}' is a directory")
-
-        elif len(argv) == 1:
-            print('Missing filename ("ppager --help" for help)')
-
-        else:
-            print('Unknown input ("ppager --help" for help)')
-
-    if pager_should_run:
-        p = Pager(text=text)
-        p.run()
+    print("Missing filename, use 'ppager --help'")
 
 
 if __name__ == "__main__":
