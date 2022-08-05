@@ -1,4 +1,4 @@
-import sys, argparse
+import sys, argparse, os
 
 from ppager.ppager import Pager
 
@@ -26,18 +26,27 @@ def run():
     )
     parser.add_argument("file", type=argparse.FileType("r"), nargs="?")
 
+    parser.add_argument(
+        "stdin",
+        type=argparse.FileType("r"),
+        default=(None if sys.stdin.isatty() else sys.stdin),
+        nargs="?",
+    )
+
     args = parser.parse_args()
 
-    if not sys.stdin.isatty():
-        # TODO
-        print("This version of ppager is not capable of using stdin :(\nIt's in TODO")
+    if args.stdin:
+        text = args.stdin.readlines()
+        f = open("/dev/tty")
+        os.dup2(f.fileno(), 0)
+
+    elif args.file:
+        text = args.file.readlines()
+    else:
+        print("Missing filename, use 'ppager --help'")
         return
 
-    if args.file:
-        Pager(text=args.file.readlines()).run()
-        return
-
-    print("Missing filename, use 'ppager --help'")
+    Pager(text=text).run()
 
 
 if __name__ == "__main__":
